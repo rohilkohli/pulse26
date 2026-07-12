@@ -6,6 +6,8 @@ import 'dotenv/config';
 import { createServer } from 'http';
 import express from 'express';
 import cors from 'cors';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
 import { DigitalTwinSimulator } from './infrastructure/digitalTwin.js';
 import { GeminiAlertEngine, MockAlertEngine } from './infrastructure/geminiAlertEngine.js';
 import { GeminiConciergeService, CannedResponseConcierge } from './infrastructure/geminiConcierge.js';
@@ -52,10 +54,20 @@ const wsServer = new PulseWebSocketServer(httpServer);
 
 // ─── Middleware ───────────────────────────────────────────────
 
+app.use(helmet());
 app.use(cors({
   origin: [CLIENT_ORIGIN, 'http://localhost:5173', 'http://127.0.0.1:5173'],
   credentials: true,
 }));
+
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+app.use('/api', apiLimiter);
+
 app.use(express.json());
 
 // ─── Routes ───────────────────────────────────────────────────

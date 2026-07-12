@@ -174,7 +174,7 @@ export function OpsDashboard() {
         <div className="flex items-center gap-4">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button className="group flex items-center justify-between bg-surface-01/80 backdrop-blur-md hover:bg-surface-02 border border-border-default hover:border-blue-500/40 dark:hover:border-blue-400/40 data-[state=open]:border-blue-500 rounded-xl px-4 py-2 transition-all duration-300 shadow-md hover:shadow-[0_0_12px_rgba(59,130,246,0.12)] focus:outline-none focus:ring-2 focus:ring-blue-500/50 w-52 cursor-pointer">
+              <button aria-label="Switch Venue" className="group flex items-center justify-between bg-surface-01/80 backdrop-blur-md hover:bg-surface-02 border border-border-default hover:border-blue-500/40 dark:hover:border-blue-400/40 data-[state=open]:border-blue-500 rounded-xl px-4 py-2 transition-all duration-300 shadow-md hover:shadow-[0_0_12px_rgba(59,130,246,0.12)] focus:outline-none focus:ring-2 focus:ring-blue-500/50 w-52 cursor-pointer">
                 <div className="flex items-center gap-3 overflow-hidden">
                   <div className="flex items-center justify-center bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 rounded-lg w-9 h-9 shrink-0 border border-blue-500/20 transition-colors group-hover:bg-blue-500/20 dark:group-hover:bg-blue-500/30">
                     <MapPin size={18} />

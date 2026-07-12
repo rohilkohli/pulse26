@@ -98,38 +98,42 @@ function LandingPage() {
 
 import { usePreferences } from './application/usePreferences';
 
+import { ErrorBoundary } from './presentation/ErrorBoundary';
+
 export default function App() {
   usePreferences();
 
   return (
-    <Router>
-      <Suspense fallback={<LoadingFallback />}>
-        <Routes>
-          {/* Landing */}
-          <Route path="/" element={<LandingPage />} />
+    <ErrorBoundary>
+      <Router>
+        <Suspense fallback={<LoadingFallback />}>
+          <Routes>
+            {/* Landing */}
+            <Route path="/" element={<LandingPage />} />
 
-          {/* Fan Companion */}
-          <Route path="/fan" element={<FanLayout />}>
-            <Route index element={<Navigate to="/fan/home" replace />} />
-            <Route path="home"     element={<FanHome />} />
-            <Route path="navigate" element={<FanNavigate />} />
-            <Route path="chat"     element={<FanChat />} />
-            <Route path="match"    element={<FanMatch />} />
-          </Route>
+            {/* Fan Companion */}
+            <Route path="/fan" element={<FanLayout />}>
+              <Route index element={<Navigate to="/fan/home" replace />} />
+              <Route path="home"     element={<FanHome />} />
+              <Route path="navigate" element={<FanNavigate />} />
+              <Route path="chat"     element={<FanChat />} />
+              <Route path="match"    element={<FanMatch />} />
+            </Route>
 
-          {/* Venue Ops Console */}
-          <Route path="/ops" element={<OpsLayout />}>
-            <Route index element={<Navigate to="/ops/dashboard" replace />} />
-            <Route path="dashboard" element={<OpsDashboard />} />
-            <Route path="alerts"    element={<OpsAlerts />} />
-            <Route path="gates"     element={<OpsGates />} />
-            <Route path="timeline"  element={<OpsTimeline />} />
-          </Route>
+            {/* Venue Ops Console */}
+            <Route path="/ops" element={<OpsLayout />}>
+              <Route index element={<Navigate to="/ops/dashboard" replace />} />
+              <Route path="dashboard" element={<OpsDashboard />} />
+              <Route path="alerts"    element={<OpsAlerts />} />
+              <Route path="gates"     element={<OpsGates />} />
+              <Route path="timeline"  element={<OpsTimeline />} />
+            </Route>
 
-          {/* Catch-all */}
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </Suspense>
-    </Router>
+            {/* Catch-all */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </Suspense>
+      </Router>
+    </ErrorBoundary>
   );
 }
