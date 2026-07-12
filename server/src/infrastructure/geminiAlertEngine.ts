@@ -127,6 +127,7 @@ Return structured JSON matching the schema.
         contents: prompt,
         config: {
           responseMimeType: 'application/json',
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           responseSchema: ALERT_SCHEMA as any,
           temperature: 0.2, // Low temp for consistent structured output
         },
