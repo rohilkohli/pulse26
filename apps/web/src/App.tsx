@@ -3,7 +3,7 @@
 // ============================================================
 
 import { Suspense } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 // Fan Companion
 import { FanLayout } from './presentation/fan/FanLayout';
@@ -102,7 +102,7 @@ export default function App() {
   usePreferences();
 
   return (
-    <BrowserRouter>
+    <Router>
       <Suspense fallback={<LoadingFallback />}>
         <Routes>
           {/* Landing */}
@@ -130,6 +130,6 @@ export default function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>
-    </BrowserRouter>
+    </Router>
   );
 }
