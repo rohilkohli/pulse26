@@ -5,7 +5,6 @@ import { VitePWA } from 'vite-plugin-pwa';
 import { resolve } from 'path';
 
 export default defineConfig({
-  base: '/pulse26/',
   plugins: [
     tailwindcss(),
     react(),

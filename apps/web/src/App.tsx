@@ -3,7 +3,7 @@
 // ============================================================
 
 import { Suspense } from 'react';
-import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 // Fan Companion
 import { FanLayout } from './presentation/fan/FanLayout';
